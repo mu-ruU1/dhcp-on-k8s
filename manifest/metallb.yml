@@ -2,7 +2,7 @@ apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
   name: dhcp-pool
-  namespace: metallb-system
+  namespace: dhcp
 spec:
   addresses:
     - 192.168.20.0/24

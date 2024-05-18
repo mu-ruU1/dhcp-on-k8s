@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kea-dhcp
+  namespace: dhcp
+spec:
+  serviceName: "kea-dhcp"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kea-dhcp
+  template:
+    metadata:
+      labels:
+        app: kea-dhcp
+    spec:
+      initContainers:
+        - name: init-config
+          image: busybox
+          command:
+            [
+              "/bin/sh",
+              "-c",
+              "cp /config/${HOSTNAME}.conf /etc/kea/kea-dhcp4.conf",
+            ]
+          volumeMounts:
+            - name: kea-config
+              mountPath: /config
+            # - name: kea-config
+            #   mountPath: /etc/kea
+            #   subPath: kea.conf
+      containers:
+        - name: kea-dhcp
+          image: muruu1/kea-dhcp:latest
+          ports:
+            - name: to-server
+              containerPort: 67
+            - name: heartbeat
+              containerPort: 8080
+          # volumeMounts:
+          #   - name: kea-config
+          #     mountPath: /etc/kea/kea.conf
+          #     subPath: kea.conf
+          #   - name: kea-data
+          #     mountPath: /var/lib/kea
+      volumes:
+        - name: kea-config
+          projected:
+            sources:
+              - configMap:
+                  name: kea-primary
+                  items:
+                    - key: kea-dhcp-0.conf
+                      path: kea-dhcp-0.conf
+              - configMap:
+                  name: kea-secondary
+                  items:
+                    - key: kea-dhcp-1.conf
+                      path: kea-dhcp-1.conf
+              - configMap:
+                  name: kea-backup
+                  items:
+                    - key: kea-dhcp-2.conf
+                      path: kea-dhcp-2.conf
+  volumeClaimTemplates:
+    - metadata:
+        name: kea-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 1Gi
