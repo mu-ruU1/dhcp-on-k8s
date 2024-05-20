@@ -18,17 +18,10 @@ spec:
         - name: init-config
           image: busybox
           command:
-            [
-              "/bin/sh",
-              "-c",
-              "cp /config/${HOSTNAME}.conf /etc/kea/kea-dhcp4.conf",
-            ]
+            ["sh", "-c", "mv /config/kea-dhcp-0.conf /config/kea-dhcp4.conf"]
           volumeMounts:
             - name: kea-config
               mountPath: /config
-            # - name: kea-config
-            #   mountPath: /etc/kea
-            #   subPath: kea.conf
       containers:
         - name: kea-dhcp
           image: muruu1/kea-dhcp:latest
@@ -37,12 +30,11 @@ spec:
               containerPort: 67
             - name: heartbeat
               containerPort: 8080
-          # volumeMounts:
-          #   - name: kea-config
-          #     mountPath: /etc/kea/kea.conf
-          #     subPath: kea.conf
-          #   - name: kea-data
-          #     mountPath: /var/lib/kea
+          volumeMounts:
+            - name: kea-config
+              mountPath: /etc/kea
+            - name: kea-data
+              mountPath: /var/lib/kea
       volumes:
         - name: kea-config
           projected:
