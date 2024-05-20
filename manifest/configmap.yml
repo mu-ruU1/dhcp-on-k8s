@@ -8,7 +8,7 @@ data:
     {
       "Dhcp4": {
         "interfaces-config": {
-          "interfaces": [ "eth0" ]
+          "interfaces": ["eth0"]
         },
         "control-socket": {
           "socket-type": "unix",
@@ -33,7 +33,7 @@ data:
           {
             "name": "domain-name-servers",
             "data": "8.8.8.8, 1.1.1.1"
-          },
+          }
         ],
         "hooks-libraries": [
           {
@@ -90,7 +90,7 @@ data:
                 "name": "routers",
                 "data": "192.0.0.254"
               }
-            ],
+            ]
           },
           {
             "subnet": "10.0.0.0/24",
@@ -104,8 +104,8 @@ data:
                 "name": "routers",
                 "data": "10.0.0.254"
               }
-            ],
-          },
+            ]
+          }
         ],
         "loggers": [
           {
@@ -113,7 +113,7 @@ data:
             "output_options": [
               {
                 "output": "stdout",
-                "pattern": "%-5p %m\n",
+                "pattern": "%-5p %m\n"
               }
             ],
             "severity": "INFO",
@@ -133,7 +133,7 @@ data:
     {
       "Dhcp4": {
         "interfaces-config": {
-          "interfaces": [ "eth0" ]
+          "interfaces": ["eth0"]
         },
         "control-socket": {
           "socket-type": "unix",
@@ -158,7 +158,7 @@ data:
           {
             "name": "domain-name-servers",
             "data": "8.8.8.8, 1.1.1.1"
-          },
+          }
         ],
         "hooks-libraries": [
           {
@@ -215,7 +215,7 @@ data:
                 "name": "routers",
                 "data": "192.0.0.254"
               }
-            ],
+            ]
           },
           {
             "subnet": "10.0.0.0/24",
@@ -229,8 +229,8 @@ data:
                 "name": "routers",
                 "data": "10.0.0.254"
               }
-            ],
-          },
+            ]
+          }
         ],
         "loggers": [
           {
@@ -238,7 +238,7 @@ data:
             "output_options": [
               {
                 "output": "stdout",
-                "pattern": "%-5p %m\n",
+                "pattern": "%-5p %m\n"
               }
             ],
             "severity": "INFO",
@@ -258,7 +258,7 @@ data:
     {
       "Dhcp4": {
         "interfaces-config": {
-          "interfaces": [ "eth0" ]
+          "interfaces": ["eth0"]
         },
         "control-socket": {
           "socket-type": "unix",
@@ -283,7 +283,7 @@ data:
           {
             "name": "domain-name-servers",
             "data": "8.8.8.8, 1.1.1.1"
-          },
+          }
         ],
         "hooks-libraries": [
           {
@@ -340,7 +340,7 @@ data:
                 "name": "routers",
                 "data": "192.0.0.254"
               }
-            ],
+            ]
           },
           {
             "subnet": "10.0.0.0/24",
@@ -354,8 +354,8 @@ data:
                 "name": "routers",
                 "data": "10.0.0.254"
               }
-            ],
-          },
+            ]
+          }
         ],
         "loggers": [
           {
@@ -363,7 +363,7 @@ data:
             "output_options": [
               {
                 "output": "stdout",
-                "pattern": "%-5p %m\n",
+                "pattern": "%-5p %m\n"
               }
             ],
             "severity": "INFO",
