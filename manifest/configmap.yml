@@ -55,19 +55,19 @@ data:
                   "peers": [
                     {
                       "name": "server1",
-                      "url": "http://kea-server1.dhcp.svc.cluster.local:8000/",
+                      "url": "http://kea-dhcp-0.dhcp.svc.cluster.local:8000/",
                       "role": "primary",
                       "auto-failover": true
                     },
                     {
                       "name": "server2",
-                      "url": "http://kea-server2.dhcp.svc.cluster.local:8000/",
+                      "url": "http://kea-dhcp-1.dhcp.svc.cluster.local:8000/",
                       "role": "secondary",
                       "auto-failover": true
                     },
                     {
                       "name": "server3",
-                      "url": "http://kea-server3.dhcp.svc.cluster.local:8000/",
+                      "url": "http://kea-dhcp-2.dhcp.svc.cluster.local:8000/",
                       "role": "backup",
                       "auto-failover": false
                     }
@@ -180,19 +180,19 @@ data:
                   "peers": [
                     {
                       "name": "server1",
-                      "url": "http://kea-server1.dhcp.svc.cluster.local:8000/",
+                      "url": "http://kea-dhcp-0.dhcp.svc.cluster.local:8000/",
                       "role": "primary",
                       "auto-failover": true
                     },
                     {
                       "name": "server2",
-                      "url": "http://kea-server2.dhcp.svc.cluster.local:8000/",
+                      "url": "http://kea-dhcp-1.dhcp.svc.cluster.local:8000/",
                       "role": "secondary",
                       "auto-failover": true
                     },
                     {
                       "name": "server3",
-                      "url": "http://kea-server3.dhcp.svc.cluster.local:8000/",
+                      "url": "http://kea-dhcp-2.dhcp.svc.cluster.local:8000/",
                       "role": "backup",
                       "auto-failover": false
                     }
@@ -305,19 +305,19 @@ data:
                   "peers": [
                     {
                       "name": "server1",
-                      "url": "http://kea-server1.dhcp.svc.cluster.local:8000/",
+                      "url": "http://kea-dhcp-0.dhcp.svc.cluster.local:8000/",
                       "role": "primary",
                       "auto-failover": true
                     },
                     {
                       "name": "server2",
-                      "url": "http://kea-server2.dhcp.svc.cluster.local:8000/",
+                      "url": "http://kea-dhcp-1.dhcp.svc.cluster.local:8000/",
                       "role": "secondary",
                       "auto-failover": true
                     },
                     {
                       "name": "server3",
-                      "url": "http://kea-server3.dhcp.svc.cluster.local:8000/",
+                      "url": "http://kea-dhcp-2.dhcp.svc.cluster.local:8000/",
                       "role": "backup",
                       "auto-failover": false
                     }

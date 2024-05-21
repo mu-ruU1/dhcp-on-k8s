@@ -12,8 +12,8 @@ spec:
       targetPort: 67
       protocol: UDP
     - name: heartbeat
-      port: 8080
-      targetPort: 8080
+      port: 8000
+      targetPort: 8000
       protocol: TCP
   selector:
     app: kea-dhcp

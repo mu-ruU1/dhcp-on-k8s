@@ -31,9 +31,9 @@ spec:
             - name: to-server
               containerPort: 67
             - name: heartbeat
-              containerPort: 8080
+              containerPort: 8000
           volumeMounts:
-            - name: kea-config
+            - name: kea-etc
               mountPath: /etc/kea
             - name: kea-data
               mountPath: /var/lib/kea
