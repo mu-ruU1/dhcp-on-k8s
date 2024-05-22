@@ -52,6 +52,12 @@ data:
                   "max-ack-delay": 5000,
                   "max-unacked-clients": 5,
                   "delayed-updates-limit": 100,
+                  "multi-threading": {
+                    "enable-multi-threading": true,
+                    "http-dedicated-listener": true,
+                    "http-listener-threads": 4,
+                    "http-client-threads": 4
+                  },
                   "peers": [
                     {
                       "name": "server1",
@@ -177,6 +183,12 @@ data:
                   "max-ack-delay": 5000,
                   "max-unacked-clients": 5,
                   "delayed-updates-limit": 100,
+                  "multi-threading": {
+                    "enable-multi-threading": true,
+                    "http-dedicated-listener": true,
+                    "http-listener-threads": 4,
+                    "http-client-threads": 4
+                  },
                   "peers": [
                     {
                       "name": "server1",
@@ -302,6 +314,12 @@ data:
                   "max-ack-delay": 5000,
                   "max-unacked-clients": 5,
                   "delayed-updates-limit": 100,
+                  "multi-threading": {
+                    "enable-multi-threading": true,
+                    "http-dedicated-listener": true,
+                    "http-listener-threads": 4,
+                    "http-client-threads": 4
+                  },
                   "peers": [
                     {
                       "name": "server1",

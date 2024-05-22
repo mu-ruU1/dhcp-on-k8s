@@ -1,4 +1,7 @@
-.PHONY docker-build
+.PHONY: docker-build docker-build-debug
 
 docker-build:
-	docker build -t isc-kea ./docker
+	docker build ./docker -t isc-kea:latest -f ./docker/Dockerfile
+
+docker-build-debug:
+	docker build ./docker -t isc-kea:debug -f ./docker/Dockerfile.debug
