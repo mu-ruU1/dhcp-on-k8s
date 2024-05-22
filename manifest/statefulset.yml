@@ -30,7 +30,7 @@ spec:
               mountPath: /config
       containers:
         - name: kea-dhcp
-          image: muruu1/isc-kea:debug
+          image: muruu1/isc-kea:latest # :debug
           imagePullPolicy: Always
           command:
             [
