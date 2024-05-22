@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: kea-dhcp
   namespace: dhcp
-  annotations:
-    metallb.universe.tf/loadBalancerIPs: 192.168.20.238
 spec:
+  selector:
+    name: kea-dhcp
+  clusterIP: None
   ports:
     - name: to-server
       port: 67
@@ -15,6 +16,3 @@ spec:
       port: 8000
       targetPort: 8000
       protocol: TCP
-  selector:
-    app: kea-dhcp
-  type: LoadBalancer

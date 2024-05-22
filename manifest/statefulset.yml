@@ -16,14 +16,18 @@ spec:
     spec:
       initContainers:
         - name: init-config
-          image: busybox
+          image: muruu1/isc-kea:latest
           command:
-            ["sh", "-c", "cp /config/kea-dhcp-0.conf /etc/kea/kea-dhcp4.conf"]
+            [
+              "sh",
+              "-c",
+              "cp /etc/kea/* /etckea && cp /config/kea-dhcp-0.conf /etckea/kea-dhcp4.conf",
+            ]
           volumeMounts:
-            - name: kea-config
-              mountPath: /config
             - name: kea-etc
-              mountPath: /etc/kea
+              mountPath: /etckea
+            - name: kea-cm
+              mountPath: /config
       containers:
         - name: kea-dhcp
           image: muruu1/isc-kea:latest
@@ -40,7 +44,7 @@ spec:
       volumes:
         - name: kea-etc
           emptyDir: {}
-        - name: kea-config
+        - name: kea-cm
           projected:
             sources:
               - configMap:
@@ -63,7 +67,7 @@ spec:
         name: kea-data
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: local-path
+        storageClassName: nfs-client
         resources:
           requests:
             storage: 1Gi
