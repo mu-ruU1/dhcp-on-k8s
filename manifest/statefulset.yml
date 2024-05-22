@@ -21,7 +21,7 @@ spec:
             [
               "sh",
               "-c",
-              "cp /etc/kea/* /etckea && cp /config/$(hostname).conf /etckea/kea-dhcp4.conf",
+              "cp /etc/kea/* /etckea && cp /config/$(hostname).conf /etckea/kea-dhcp4.conf && cp /config/update-config.sh /etckea/update-config.sh",
             ]
           volumeMounts:
             - name: kea-etc
@@ -32,7 +32,12 @@ spec:
         - name: kea-dhcp
           image: muruu1/isc-kea:debug
           imagePullPolicy: Always
-          command: ["sh", "-c", "sleep 5; kea-dhcp4 /etc/kea/kea-dhcp4.conf"]
+          command:
+            [
+              "sh",
+              "-c",
+              "sleep 60; sh /etc/kea/update-config.sh && kea-dhcp4 -c /etc/kea/kea-dhcp4.conf",
+            ]
           ports:
             - name: to-server
               containerPort: 67
@@ -64,6 +69,11 @@ spec:
                   items:
                     - key: kea-dhcp-2.conf
                       path: kea-dhcp-2.conf
+              - configMap:
+                  name: kea-config-updater
+                  items:
+                    - key: update-config.sh
+                      path: update-config.sh
   volumeClaimTemplates:
     - metadata:
         name: kea-data

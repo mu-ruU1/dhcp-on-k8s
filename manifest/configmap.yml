@@ -390,3 +390,30 @@ data:
         ]
       }
     }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kea-config-updater
+  namespace: dhcp
+data:
+  update-config.sh: |
+    #!/bin/sh
+
+    resolve_host() {
+      host=$1
+      ip=$(getent hosts $host | awk '{ print $1 }')
+      echo $ip
+    }
+
+    CONFIG_FILE="/etc/kea/kea-dhcp4.conf"
+
+    for hostname in "kea-dhcp-0.kea-dhcp.dhcp.svc.cluster.local" "kea-dhcp-1.kea-dhcp.dhcp.svc.cluster.local" "kea-dhcp-2.kea-dhcp.dhcp.svc.cluster.local"; do
+      ip=$(resolve_host $hostname)
+      if [ -n "$ip" ]; then
+        sed -i "s|$hostname|$ip|g" $CONFIG_FILE
+      else
+        echo "Failed to resolve $hostname"
+        exit 1
+      fi
+    done
