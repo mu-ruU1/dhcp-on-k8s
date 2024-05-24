@@ -39,7 +39,7 @@ spec:
               "sleep 60; sh /etc/kea/update-config.sh && kea-dhcp4 -c /etc/kea/kea-dhcp4.conf",
             ]
           ports:
-            - name: to-server
+            - name: bootps
               containerPort: 67
             - name: heartbeat
               containerPort: 8000
